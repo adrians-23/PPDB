@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    AuthController,
+    JurusanController,
+    SiswaController
+
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +20,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('template.layout');
 });
+
+//Login & Register
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+//Dashboard
+
+//Jurusan
+
+//Siswa
+
+//Profile
