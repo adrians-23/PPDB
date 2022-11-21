@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AuthController,
+    DashboardController,
     JurusanController,
     SiswaController
 
@@ -20,16 +21,23 @@ use App\Http\Controllers\{
 */
 
 Route::get('/', function () {
-    return view('template.layout');
+    return view('welcome');
 });
 
 //Login & Register
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+
 //Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 //Jurusan
+Route::get('/jurusan/data', [JurusanController::class, 'data'])->name('jurusan.data');
+Route::resource('/jurusan', JurusanController::class);
 
 //Siswa
+Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
+Route::resource('/siswa', SiswaController::class);
 
 //Profile
+Route::resource('/profile', ProfileController::class);

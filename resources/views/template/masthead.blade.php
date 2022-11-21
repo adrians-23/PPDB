@@ -1,4 +1,4 @@
-<!-- Masthead-->
+{{-- <!-- Masthead-->
 <header class="masthead">
     <div class="container position-relative">
         <div class="row justify-content-center">
@@ -10,4 +10,4 @@
             </div>
         </div>
     </div>
-</header>
+</header> --}}
