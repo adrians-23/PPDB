@@ -1,51 +1,52 @@
-@extends('template.layout')
+@extends('template.layoutAuth')
 
 @push('stylesheet')
-<link href="{{ asset('assets/css/loginpage.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('authPageTemplate/fonts/icomoon/style.css') }}">
+
+<link rel="stylesheet" href="{{ asset('authPageTemplate/css/owl.carousel.min.css') }}">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ asset('authPageTemplate/css/bootstrap.min.css') }}">
+
+<!-- Style -->
+<link rel="stylesheet" href="{{ asset('authPageTemplate/css/style.css') }}">
 @endpush
 
-<section class="vh-100">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 text-black">
+@section('content')
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('{{ asset('authPageTemplate/images/bg_1.jpg') }}');"></div>
+    <div class="contents order-2 order-md-1">
 
-                <div class="px-5 ms-xl-4">
-                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-                    <span class="h1 fw-bold mb-0">Logo</span>
-                </div>
-
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-                    <form style="width: 23rem;">
-
-                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-
-                        <div class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7">
+                    <h3>Login to <strong>Colorlib</strong></h3>
+                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                    <form action="/postlogin" method="post">
+                    @csrf
+                        <div class="form-group first">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" placeholder="your-email@gmail.com" id="email">
+                        </div>
+                        <div class="form-group last mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Your Password" id="password">
                         </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="password" id="form2Example28" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example28">Password</label>
-                        </div>
-
-                        <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block" type="button">Login</button>
-                        </div>
-
-                        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-                        <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary">Log In</button>
 
                     </form>
-
                 </div>
-
-            </div>
-            <div class="col-sm-6 px-0 d-none d-sm-block">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
-                    alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
         </div>
     </div>
-</section>
+</div>
+
+@push('script')
+    <script src="{{ asset('authPageTemplate/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('authPageTemplate/js/popper.min.js') }}"></script>
+    <script src="{{ asset('authPageTemplate/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('authPageTemplate/js/main.js') }}"></script>
+@endpush
+
+@endsection

@@ -5,7 +5,8 @@ use App\Http\Controllers\{
     AuthController,
     DashboardController,
     JurusanController,
-    SiswaController
+    SiswaController,
+    ProfileController
 
 };
 
@@ -26,7 +27,11 @@ Route::get('/', function () {
 
 //Login & Register
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('login.postlogin');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+//route logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

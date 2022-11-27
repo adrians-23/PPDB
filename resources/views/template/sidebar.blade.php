@@ -23,7 +23,7 @@
             
             <li class="{{ request()->is('jurusan') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('jurusan.index') }}">
-                    <i class="fas fa-books"></i>
+                    <i class="fas fa-book"></i>
                     <span>Jurusan</span>
                 </a>
             </li>

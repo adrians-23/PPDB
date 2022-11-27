@@ -11,4 +11,29 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
+
+    public function postlogin(Request $request)
+    {
+        //dd($request->all());
+        
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ],
+        [
+            'email.required' => 'Email harus diisi',
+            'password.required' => 'Password harus diisi'
+        ]);
+
+        if(Auth::attempt($request->only('email', 'password'))){
+            return redirect('/dashboard');
+        }
+        return redirect('/login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
 }

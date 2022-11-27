@@ -29,7 +29,7 @@
                     </div>
 
                     {{-- Tabel --}}
-                    <div class="card-body"  style="width: 100%;">
+                    <div class="card-body" style="width: 100%;">
                         <table class="table table-striped text-nowrap">
                             <thead>
                                 <tr>
@@ -40,8 +40,6 @@
                                     <td scope="col">Email</td>
                                     <td scope="col">NISN</td>
                                     <td scope="col">Alamat</td>
-                                    <td scope="col">Asal Sekolah</td>
-                                    <td scope="col">Nama Wali</td>
                                     <td scope="col" style="width: 84px;">Aksi</td>
                                 </tr>
                             </thead>
@@ -67,7 +65,7 @@
         $(function() {
             table = $('.table').DataTable({
                 proccesing: true,
-                autowidth: false,
+                autowidth: true,
                 ajax: {
                     url: '{{ route('siswa.data') }}'
                 },
@@ -79,8 +77,6 @@
                     {data: 'email'},
                     {data: 'nisn'},
                     {data: 'alamat'},
-                    {data: 'asal_sekolah'},
-                    {data: 'nama_wali'},
                     {data: 'aksi'}
                 ]
             });
@@ -133,6 +129,8 @@
                     $('#modalForm [name=jenis_kelamin]').val(response.jenis_kelamin);
                     $('#modalForm [name=email]').val(response.email);
                     $('#modalForm [name=nisn]').val(response.nisn);
+                    $('#modalForm [name=tempat_lahir]').val(response.tempat_lahir);
+                    $('#modalForm [name=tanggal_lahir]').val(response.tanggal_lahir);
                     $('#modalForm [name=alamat]').val(response.alamat);
                     $('#modalForm [name=asal_sekolah]').val(response.asal_sekolah);
                     $('#modalForm [name=nama_wali]').val(response.nama_wali);

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
-use Illuminate\Http\Request;
 use App\Models\Jurusan;
+use Illuminate\Http\Request;
 use Validator;
 
 class SiswaController extends Controller
@@ -24,7 +24,8 @@ class SiswaController extends Controller
 
     public function data()
     {
-        $siswa = Siswa::orderBy('id', 'desc')->get();
+        $siswa = siswa::orderBy('id', 'desc')->get();
+        $jurusan = Jurusan::all();
 
         return datatables()
             ->of($siswa)

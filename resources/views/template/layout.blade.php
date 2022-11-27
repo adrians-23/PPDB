@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('assets/modules/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/css/owl.theme.default.min.css') }}">
 
+    {{-- FontAwesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
     {{-- Izitoast --}}
     <link rel="stylesheet" href="{{ asset('/izitoast/iziToast.min.css') }}">
 
