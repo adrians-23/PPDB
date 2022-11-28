@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'role_id' => 1,
-            'name' => 'admin',
+            'name' => 'Admin',
             'email' => 'admin@ppdb.com',
             'password' => bcrypt('admin'),
             'remember_token' => Str::random(20),
@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'role_id' => 2,
-            'name' => 'adrian',
+            'name' => 'Adrian',
             'email' => 'adrian@gmail.com',
             'password' => bcrypt('adrian'),
             'remember_token' => Str::random(20),

@@ -7,7 +7,7 @@ use App\Models\Jurusan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
-
+use Str;
 class SiswaController extends Controller
 {
     /**
@@ -30,7 +30,7 @@ class SiswaController extends Controller
         return datatables()
             ->of($siswa)
             ->addIndexColumn()
-            ->addColumn('jurusan', function($siswa){
+            ->addColumn('jurusan_id', function($siswa){
                 return !empty($siswa->jurusan->nama) ? $siswa->jurusan->nama : '-';
             })
             ->addColumn('aksi', function($siswa){
@@ -67,7 +67,8 @@ class SiswaController extends Controller
     {
         $user = new User;
         $user->name = $request->nama;
-        $user->password = bcrypt('password');
+        $user->password = bcrypt('12345678');
+        $user->remember_token = Str::random(20);
         $user->email = $request->email;
         $user->role_id = 2;
         $user->status = 'inactive';
@@ -75,7 +76,7 @@ class SiswaController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'jurusan' => 'required',
+            'jurusan_id' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'email' => 'required',
@@ -91,7 +92,7 @@ class SiswaController extends Controller
         $request->request->add(['user_id' => $user->id]);
         $siswa = Siswa::create([
             'nama' => $request->nama,
-            'jurusan' => $request->jurusan,
+            'jurusan_id' => $request->jurusan_id,
             'jenis_kelamin' => $request->jenis_kelamin,
             'agama' => $request->agama,
             'email' => $request->email,
@@ -151,9 +152,19 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $siswa->nama = $request->nama;
+        $siswa->nisn = $request->nisn;
+        $siswa->jurusan_id = $request->jurusan_id;
+        $siswa->email = $request->email;
+        $siswa->telepon = $request->telepon;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->tempat_lahir = $request->tempat_lahir;
+        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->alamat = $request->alamat;
+        $siswa->asal_sekolah = $request->asal_sekolah;
         $siswa->update();
 
-        return response()->json('Data Berhasil Disimpan');
+        return response()->json('Data Telah Diupdate');
     }
 
     /**

@@ -1,17 +1,5 @@
 @extends('template.layoutAuth')
 
-@push('stylesheet')
-<link rel="stylesheet" href="{{ asset('authPageTemplate/fonts/icomoon/style.css') }}">
-
-<link rel="stylesheet" href="{{ asset('authPageTemplate/css/owl.carousel.min.css') }}">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="{{ asset('authPageTemplate/css/bootstrap.min.css') }}">
-
-<!-- Style -->
-<link rel="stylesheet" href="{{ asset('authPageTemplate/css/style.css') }}">
-@endpush
-
 @section('content')
 <div class="d-lg-flex half">
     <div class="bg order-1 order-md-2" style="background-image: url('{{ asset('authPageTemplate/images/bg_1.jpg') }}');"></div>
@@ -41,12 +29,5 @@
         </div>
     </div>
 </div>
-
-@push('script')
-    <script src="{{ asset('authPageTemplate/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('authPageTemplate/js/popper.min.js') }}"></script>
-    <script src="{{ asset('authPageTemplate/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('authPageTemplate/js/main.js') }}"></script>
-@endpush
 
 @endsection

@@ -31,12 +31,12 @@ Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('login.pos
 
 //Register
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/postregister', [AuthController::class, 'postRegister'])->name('register.postregister');
+Route::post('/register', [AuthController::class, 'postRegister'])->name('register.postregister');
 
 //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::group(['middleware' => 'auth'], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:1']], function(){
     //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -50,4 +50,8 @@ Route::group(['middleware' => 'auth'], function(){
     
     //Profile
     Route::resource('/profile', ProfileController::class);
-});
+// });
+
+// Route::group(['middleware' => ['auth', 'checkrole:1, 2']], function(){
+    Route::resource('/profile', ProfileController::class);
+// });

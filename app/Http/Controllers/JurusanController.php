@@ -115,7 +115,7 @@ class JurusanController extends Controller
         $jurusan->nama = $request->nama;
         $jurusan->update();
 
-        return response()->json('Data Berhasil Disimpan');
+        return response()->json('Data Telah Diupdate');
     }
 
     /**

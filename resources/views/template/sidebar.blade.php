@@ -36,11 +36,20 @@
                 </a>
             </li>
 
+            <li class="menu-header">Setting</li>
+
+            <li class="{{ request()->is('user') ? 'active' : '' }}">
+                <a class="nav-link" href="">
+                    <i class="fas fa-user"></i>
+                    <span>User</span>
+                </a>
+            </li>
         </ul>
         @endif
 
         @if(auth()->user()->role_id == '2')
         <ul class="sidebar-menu">
+
             <li class="menu-header">Main</li>
 
             <li class="{{ request()->is('profile') ? 'active' : '' }}">

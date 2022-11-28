@@ -31,9 +31,9 @@
                             <div class="col-12 col-lg-6 col-md-6">
                                 {{-- Add Jurusan --}}
                                 <div class="my-1">
-                                    <label class="mb-2" for="jursan">Jurusan</label>
+                                    <label class="mb-2" for="jurusan_id">Jurusan</label>
                                     <br>
-                                    <select name="jurusan" id="jurusan" value="{{ old('jurusan')}}" class="form-control">
+                                    <select name="jurusan_id" id="jurusan_id" value="{{ old('jurusan_id')}}" class="form-control">
                                         <option selected>Pilih...</option>
                                         @foreach($jurusan as $jurusan)
                                             <option value="{{$jurusan->id}}">{{$jurusan->nama}}</option>
@@ -107,7 +107,7 @@
                                 {{-- Add Alamat --}}
                                 <div class="my-1">
                                     <label class="mb-2" for="alamat">Alamat</label>
-                                    <textarea class="form-control"  id="floatingTextarea" name="alamat" placeholder="..."></textarea>
+                                    <textarea class="form-control"  id="alamat" name="alamat" placeholder="..."></textarea>
                                 </div>
                             </div>
 
@@ -115,7 +115,7 @@
                                 {{-- Add Asal Sekolah --}}
                                 <div class="my-1">
                                     <label class="mb-2" for="asal_sekolah">Asal Sekolah</label>
-                                    <textarea class="form-control"  id="floatingTextarea" name="asal_sekolah" placeholder="..."></textarea>
+                                    <textarea class="form-control"  id="asal_sekolah" name="asal_sekolah" placeholder="..."></textarea>
                                 </div>
                             </div>
                         </div>

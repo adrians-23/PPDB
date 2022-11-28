@@ -65,14 +65,14 @@
         $(function() {
             table = $('.table').DataTable({
                 proccesing: true,
-                autowidth: true,
+                autowidth: false,
                 ajax: {
                     url: '{{ route('siswa.data') }}'
                 },
                 columns: [
                     {data: 'DT_RowIndex'},
                     {data: 'nama'},
-                    {data: 'jurusan'},
+                    {data: 'jurusan_id'},
                     {data: 'jenis_kelamin'},
                     {data: 'email'},
                     {data: 'nisn'},
@@ -125,9 +125,11 @@
             $.get (url)
                 .done((response) => {
                     $('#modalForm [name=nama]').val(response.nama);
-                    $('#modalForm [name=jurusan]').val(response.jurusan);
+                    $('#modalForm [name=jurusan_id]').val(response.jurusan_id);
                     $('#modalForm [name=jenis_kelamin]').val(response.jenis_kelamin);
+                    $('#modalForm [name=agama]').val(response.agama);
                     $('#modalForm [name=email]').val(response.email);
+                    $('#modalForm [name=telepon]').val(response.telepon);
                     $('#modalForm [name=nisn]').val(response.nisn);
                     $('#modalForm [name=tempat_lahir]').val(response.tempat_lahir);
                     $('#modalForm [name=tanggal_lahir]').val(response.tanggal_lahir);
