@@ -65,11 +65,15 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::all();
         $user = new User;
-        
+        $user->name = $request->nama;
+        $user->password = bcrypt('password');
+        $user->email = $request->email;
+        $user->role_id = 2;
+        $user->status = 'inactive';
+        $user->save();
+
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
             'nama' => 'required',
             'jurusan' => 'required',
             'jenis_kelamin' => 'required',
@@ -83,18 +87,9 @@ class SiswaController extends Controller
             'asal_sekolah' => 'required',
         ]);
 
-        //membuat table user
-        // $user = User::create([
-        //     'name' => $request->nama,
-        //     'password' => bcrypt('12345678'),
-        //     'email' => $request->email,
-        //     'role_id' => 2,
-        //     'status' => 'inactive'
-        // ]);
-
         //membuat table siswa
+        $request->request->add(['user_id' => $user->id]);
         $siswa = Siswa::create([
-            'user_id' => $request->$user->id,
             'nama' => $request->nama,
             'jurusan' => $request->jurusan,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -107,6 +102,8 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'asal_sekolah' => $request->asal_sekolah,
         ]);
+
+        $request->request->add(['user_id' => $user->id]);
 
         if($validator->fails()){
             return response()->json($validator->errors(), 422);
