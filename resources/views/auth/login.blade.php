@@ -20,9 +20,9 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7">
-                    <h3>Login to <strong>Colorlib</strong></h3>
+                    <h3>Masuk ke <strong>PPDB</strong></h3>
                     <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-                    <form action="/postlogin" method="post">
+                    <form action="{{ route('login.postlogin') }}" method="post">
                     @csrf
                         <div class="form-group first">
                             <label for="email">Email</label>

@@ -7,6 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
+    {{-- Izitoast --}}
+    <link rel="stylesheet" href="{{ asset('izitoast/iziToast.min.css') }}">
+
     @stack('stylesheet')
 </head>
 
@@ -22,7 +25,9 @@
         </div>
     </div>
 
+    {{-- Izitoast --}}
+    <script src="{{ asset('izitoast/iziToast.min.js') }}"></script>
+
     @stack('script')
 </body>
-
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use App\Models\Jurusan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -25,7 +26,6 @@ class SiswaController extends Controller
     public function data()
     {
         $siswa = siswa::orderBy('id', 'desc')->get();
-        $jurusan = Jurusan::all();
 
         return datatables()
             ->of($siswa)
@@ -65,35 +65,52 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::all();
+        $user = new User;
+        
         $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
             'nama' => 'required',
             'jurusan' => 'required',
             'jenis_kelamin' => 'required',
+            'agama' => 'required',
             'email' => 'required',
-            'nisn' => 'required',
+            'telepon' => 'required|numeric',
+            'nisn' => 'required|numeric',
             'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => 'required|date_format:Y-m-d',
             'alamat' => 'required',
             'asal_sekolah' => 'required',
-            'nama_wali' => 'required'
         ]);
 
-        if($validator->fails()){
-            return response()->json($validator->errors(), 422);
-        }
+        //membuat table user
+        // $user = User::create([
+        //     'name' => $request->nama,
+        //     'password' => bcrypt('12345678'),
+        //     'email' => $request->email,
+        //     'role_id' => 2,
+        //     'status' => 'inactive'
+        // ]);
 
+        //membuat table siswa
         $siswa = Siswa::create([
+            'user_id' => $request->$user->id,
             'nama' => $request->nama,
             'jurusan' => $request->jurusan,
             'jenis_kelamin' => $request->jenis_kelamin,
+            'agama' => $request->agama,
             'email' => $request->email,
+            'telepon' => $request->telepon,
             'nisn' => $request->nisn,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat,
             'asal_sekolah' => $request->asal_sekolah,
-            'nama_wali' => $request->nama_wali
         ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
 
         return response()->json([
             'success' => true,

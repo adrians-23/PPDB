@@ -9,6 +9,7 @@
             <a href="{{ route('dashboard') }}">PPDB</a>
         </div>
 
+        @if(auth()->user()->role_id == '1')
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
 
@@ -36,6 +37,20 @@
             </li>
 
         </ul>
+        @endif
+
+        @if(auth()->user()->role_id == '2')
+        <ul class="sidebar-menu">
+            <li class="menu-header">Main</li>
+
+            <li class="{{ request()->is('profile') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('profile.index') }}">
+                    <i class="fas fa-user"></i>
+                    <span>Profil</span>
+                </a>
+            </li>
+        </ul>
+        @endif
     </aside>
 </div>
 

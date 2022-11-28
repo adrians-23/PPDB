@@ -28,21 +28,26 @@ Route::get('/', function () {
 //Login & Register
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('login.postlogin');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
 
-//route logout
+//Register
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/postregister', [AuthController::class, 'postRegister'])->name('register.postregister');
+
+//Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-//Jurusan
-Route::get('/jurusan/data', [JurusanController::class, 'data'])->name('jurusan.data');
-Route::resource('/jurusan', JurusanController::class);
-
-//Siswa
-Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
-Route::resource('/siswa', SiswaController::class);
-
-//Profile
-Route::resource('/profile', ProfileController::class);
+Route::group(['middleware' => 'auth'], function(){
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    //Jurusan
+    Route::get('/jurusan/data', [JurusanController::class, 'data'])->name('jurusan.data');
+    Route::resource('/jurusan', JurusanController::class);
+    
+    //Siswa
+    Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
+    Route::resource('/siswa', SiswaController::class);
+    
+    //Profile
+    Route::resource('/profile', ProfileController::class);
+});

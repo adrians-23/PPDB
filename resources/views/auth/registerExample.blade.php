@@ -21,7 +21,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7">
                     <h3>PPDB <strong>SMK Antartika 1 Sidoarjo</strong></h3>
-                    <form id="formDaftar" action="addForm('{{ route('register.postregister') }}')" method="POST">
+                    <form id="formDaftar" action="addForm('{{ route('register.store') }}')" method="POST">
                     @csrf
                     @method('PUT')
                         <div class="form-group first">
@@ -190,7 +190,7 @@
                         </div>
 
 
-                        <button type="submit" onclick="addForm('{{ route('register.postregister') }}')" name="submit" class="btn btn-block btn-primary">Daftar</button>
+                        <button type="submit" onclick="addForm('{{ route('register.store') }}')" name="submit" class="btn btn-block btn-primary">Daftar</button>
 
                     </form>
                 </div>
