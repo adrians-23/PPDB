@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->text('asal_sekolah');
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
