@@ -39,11 +39,7 @@
                                     <p class="mb-0">Nama</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">
-                                        @foreach ($siswa as $s)
-                                            @s->nama
-                                        @endforeach
-                                    </p>
+                                    <p class="text-muted mb-0">aaa</p>
                                 </div>
                             </div>
 

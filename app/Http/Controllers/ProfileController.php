@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\Jurusan;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -12,9 +15,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('profile.index');
+        //mengambil data
+        $siswa = Siswa::all();;
+        $jurusan = Jurusan::all();
+
+        return view('profile.index', compact('siswa', 'jurusan'));
     }
 
     /**

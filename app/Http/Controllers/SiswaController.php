@@ -23,6 +23,13 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa', 'jurusan'));
     }
 
+    // public function profile()
+    // {
+    //     $siswa = Siswa::all();;
+
+    //     return view('siswa.profile', compact('siswa'));
+    // }
+
     public function data()
     {
         $siswa = siswa::orderBy('id', 'desc')->get();
@@ -175,8 +182,13 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
+        //menghapus data siswa
         $siswa = Siswa::find($id);
         $siswa->delete();
+
+        //menghapus data user
+        $user = User::find($id+1);
+        $user->delete();
 
         return redirect('siswa');
     }

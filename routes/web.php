@@ -49,9 +49,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('/siswa', SiswaController::class);
     
     //Profile
-    Route::resource('/profile', ProfileController::class);
+    // Route::get('/profile/data', [ProfileController::class, 'data'])->name('profile.data');
+    // Route::resource('/profile', ProfileController::class)->name('profile');
 // });
 
 // Route::group(['middleware' => ['auth', 'checkrole:1, 2']], function(){
-    Route::resource('/profile', ProfileController::class);
+    Route::get('/profile', [ProfileController::class], 'index')->name('profile.index');
 // });
