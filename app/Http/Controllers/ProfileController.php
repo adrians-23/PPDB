@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\Auth;
 use App\Models\User;
 use App\Models\Jurusan;
 use App\Models\Siswa;
@@ -15,13 +16,12 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        //mengambil data
-        $siswa = Siswa::all();;
         $jurusan = Jurusan::all();
+        $siswa = Siswa::all();
 
-        return view('profile.index', compact('siswa', 'jurusan'));
+        return view('profile.index', compact('jurusan', 'siswa'));
     }
 
     /**

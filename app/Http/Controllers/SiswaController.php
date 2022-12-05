@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 use Str;
+use PDF;
 class SiswaController extends Controller
 {
     /**
@@ -23,12 +24,12 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa', 'jurusan'));
     }
 
-    // public function profile()
-    // {
-    //     $siswa = Siswa::all();;
+    public function profile()
+    {
+        $siswa = Siswa::all();
 
-    //     return view('siswa.profile', compact('siswa'));
-    // }
+        return view('siswa.profile', compact('siswa'));
+    }
 
     public function data()
     {
@@ -46,6 +47,7 @@ class SiswaController extends Controller
                 <div class="btn-group">
                     <button onclick="editData(`' .route('siswa.update', $siswa->id). '`)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                     <button onclick="deleteData(`' .route('siswa.destroy', $siswa->id). '`)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                    <a href="' .route('siswa.pdf', $siswa->id). '" target="_blank" onclick="(`' .route('siswa.pdf', $siswa->id). '`)" class="btn btn-success btn-sm"><i class="fa fa-print"></i></a>
                 </div>
 
                 ';
@@ -61,7 +63,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('jurusan.form');
+        return view('siswa.form');
     }
 
     /**
@@ -191,5 +193,13 @@ class SiswaController extends Controller
         $user->delete();
 
         return redirect('siswa');
+    }
+
+    public function pdf($id)
+    {
+        $siswa = Siswa::find($id);
+
+        $pdf =  PDF::loadview('siswa.pdf', compact('siswa'));
+        return $pdf->stream('siswa.pdf');
     }
 }

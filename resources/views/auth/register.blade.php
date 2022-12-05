@@ -9,9 +9,8 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7">
                     <h3>PPDB <strong>SMK Antartika 1 Sidoarjo</strong></h3>
-                    <form id="formDaftar" action="addForm('{{ route('register.postregister') }}')" method="POST">
+                    <form action="{{ route('register.postregister') }}" method="post">
                         @csrf
-                        @method('PUT')
 
                         {{-- Add Nama --}}
                         <div class="my-1">
@@ -119,8 +118,14 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- Add Password --}}
+                        <div class="my-1">
+                            <label class="mb-2" for="password">Password</label>
+                            <input type="text" name="password" id="password" value="{{ old('password')}}" class="form-control">
+                        </div>
                         
-                        <button type="submit" onclick="addForm('{{ route('register.postregister') }}')" name="submit" class="btn btn-block btn-primary">Daftar</button>
+                        <button type="submit" name="submit" class="btn btn-block btn-primary">Daftar</button>
 
                     </form>
                 </div>
@@ -130,40 +135,3 @@
 </div>
 
 @endsection
-
-@push('script')
-    <script>
-
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
-        $('#formDaftar').on('submit', function(e){
-            if(! e.preventDefault()){
-                $.post($('#formDaftar form').attr('action'), $('#formDaftar form').serialize())
-                .done((response) => {
-                    iziToast.success({
-                        title: 'Sukses',
-                        message: 'Data berhasil disimpan',
-                        position: 'topRight'
-                    })
-                })
-                .fail((errors) => {
-                    iziToast.error({
-                        title: 'Gagal',
-                        message: 'Data gagal disimpan',
-                        position: 'topRight'
-                    })
-                    return;
-                })
-            }
-        })
-
-        function addForm(url){
-            $('#formDaftar form').attr('action', url);
-            $('#formDaftar [name=_method]').val('post');
-        }
-    </script>
-@endpush

@@ -39,7 +39,7 @@
                                     <p class="mb-0">Nama</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">aaa</p>
+                                    <p class="text-muted mb-0">{{ Auth()->user()->name }}</p>
                                 </div>
                             </div>
 
@@ -47,10 +47,10 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Jurusan</p>
+                                    <p class="mb-0" style="align: center;">Jurusan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">RPL</p>
+                                    <p class="text-muted mb-0">{{ Auth()->$jurusan->nama }}</p>
                                 </div>
                             </div>
 

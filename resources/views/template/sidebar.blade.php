@@ -58,6 +58,13 @@
                     <span>Profil</span>
                 </a>
             </li>
+
+            {{-- <li class="{{ request()->is('user/siswa') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('user.siswa') }}">
+                    <i class="fas fa-users"></i>
+                    <span>Siswa</span>
+                </a>
+            </li> --}}
         </ul>
         @endif
     </aside>

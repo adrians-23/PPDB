@@ -49,18 +49,27 @@ class AuthController extends Controller
         return view('auth.register', compact('jurusan'));
     }
 
-    public function postRegister(Request $request)
+    public function postregister(Request $request)
     {
         //dd($request->all());
         
-        $user = new User;
-        $user->name = $request->nama;
-        $user->password = bcrypt('12345678');
-        $user->remember_token = Str::random(20);
-        $user->email = $request->email;
-        $user->role_id = 2;
-        $user->status = 'inactive';
-        $user->save();
+        // $user = new User;
+        // $user->name = $request->name;
+        // $user->password = bcrypt('12345678');
+        // $user->remember_token = Str::random(20);
+        // $user->email = $request->email;
+        // $user->role_id = 2;
+        // $user->status = 'inactive';
+        // $user->save();
+
+        $user = User::create([
+            'role_id' => 2,
+            'name' => $request->nama,
+            'password' => bcrypt($request->password),
+            'email' => $request->email,
+            'remember_token' => Str::random(20),
+            'status' => 'inactive',
+        ]);
 
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
@@ -92,17 +101,11 @@ class AuthController extends Controller
             'asal_sekolah' => $request->asal_sekolah,
         ]);
 
-        $request->request->add(['user_id' => $user->id]);
-
         if($validator->fails()){
             return response()->json($validator->errors(), 422);
         }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Data Berhasil Disimpan',
-            'data' => $siswa
-        ]);
+        return redirect('/login');
     }
 
     public function logout()

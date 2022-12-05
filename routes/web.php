@@ -7,9 +7,7 @@ use App\Http\Controllers\{
     JurusanController,
     SiswaController,
     ProfileController
-
 };
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +29,12 @@ Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('login.pos
 
 //Register
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'postRegister'])->name('register.postregister');
+Route::post('/postregister', [AuthController::class, 'postregister'])->name('register.postregister');
 
 //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::group(['middleware' => ['auth', 'checkrole:1']], function(){
+Route::group(['middleware' => ['auth', 'checkrole:1']], function(){
     //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -47,12 +45,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     //Siswa
     Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
     Route::resource('/siswa', SiswaController::class);
+    Route::get('/siswa/pdf/{id}', [SiswaController::class, 'pdf'])->name('siswa.pdf');
     
     //Profile
     // Route::get('/profile/data', [ProfileController::class, 'data'])->name('profile.data');
     // Route::resource('/profile', ProfileController::class)->name('profile');
-// });
+});
 
-// Route::group(['middleware' => ['auth', 'checkrole:1, 2']], function(){
-    Route::get('/profile', [ProfileController::class], 'index')->name('profile.index');
-// });
+Route::group(['middleware' => ['auth', 'checkrole:1, 2']], function(){
+    Route::resource('/profile', ProfileController::class);
+});
