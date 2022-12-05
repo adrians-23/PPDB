@@ -59,12 +59,12 @@
                 </a>
             </li>
 
-            {{-- <li class="{{ request()->is('user/siswa') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('user.siswa') }}">
+            <li class="{{ request()->is('pesertadidik') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('pesertadidik.index') }}">
                     <i class="fas fa-users"></i>
-                    <span>Siswa</span>
+                    <span>Peserta Didik</span>
                 </a>
-            </li> --}}
+            </li>
         </ul>
         @endif
     </aside>

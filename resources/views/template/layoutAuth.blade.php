@@ -27,6 +27,16 @@
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
 
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <form class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
+                                    class="fas fa-bars"></i></a></li>
+                    </ul>
+                    <a class="nav-link" href="/">Home</a>
+                </form>
+            </nav>
+
             <!-- Main Content -->
             <div class="main-content">
                 @yield('content')

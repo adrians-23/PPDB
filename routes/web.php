@@ -6,7 +6,8 @@ use App\Http\Controllers\{
     DashboardController,
     JurusanController,
     SiswaController,
-    ProfileController
+    ProfileController,
+    PesertadidikController,
 };
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +54,10 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'checkrole:1, 2']], function(){
+    //Profile
     Route::resource('/profile', ProfileController::class);
+
+    //userSiswa
+    Route::get('/pesertadidik/data', [PesertadidikController::class, 'data'])->name('pesertadidik.data');
+    Route::resource('/pesertadidik', PesertadidikController::class);
 });

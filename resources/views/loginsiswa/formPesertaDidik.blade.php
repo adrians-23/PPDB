@@ -1,16 +1,17 @@
-@extends('template.layoutAuth')
-
-@section('content')
-<div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('{{ asset('authPageTemplate/images/bg_1.jpg') }}');"></div>
-    <div class="contents order-2 order-md-1">
-
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-7">
-                    <h3>PPDB <strong>SMK Antartika 1 Sidoarjo</strong></h3>
-                    <form action="{{ route('register.postregister') }}" method="post">
-                        @csrf
+<div class="modal fade" id="modalForm" style="display: none; padding-right: 17px;" aria-modal="true" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
 
                         {{-- Add Nama --}}
                         <div class="my-1">
@@ -119,19 +120,17 @@
                             </div>
                         </div>
 
-                        {{-- Add Password --}}
-                        <div class="my-1">
-                            <label class="mb-2" for="password">Password</label>
-                            <input type="password" name="password" id="password" value="{{ old('password')}}" class="form-control">
-                        </div>
-                        
-                        <button type="submit" name="submit" class="btn btn-block btn-primary">Daftar</button>
+                    </div>
 
-                    </form>
-                </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </form>
             </div>
         </div>
-    </div>
-</div>
 
-@endsection
+    </div>
+
+</div>
