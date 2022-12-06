@@ -45,30 +45,4 @@
     </div>
 </section>
 
-@include('siswa.form')
-
 @endsection
-
-@push('script')
-    <script>
-        // Data Tables
-        let table;
-
-        $(function() {
-            table = $('.table').DataTable({
-                proccesing: true,
-                autowidth: false,
-                ajax: {
-                    url: '{{ route('pesertadidik.data') }}'
-                },
-                columns: [
-                    {data: 'DT_RowIndex'},
-                    {data: 'nama'},
-                    {data: 'jurusan_id'},
-                    {data: 'jenis_kelamin'},
-                    {data: 'asal_sekolah'},
-                ]
-            });
-        })
-    </script>
-@endpush

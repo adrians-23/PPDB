@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Jurusan;
 use App\Models\Auth;
 use App\Models\Profile;
+use App\Models\User;
 class Siswa extends Model
 {
     use HasFactory;
@@ -25,5 +26,9 @@ class Siswa extends Model
 
     public function Profile(){
         return $this->hasMany(Profile::class);
+    }
+
+    public function User(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -107,7 +107,7 @@
 
         function addForm(url){
             $('#modalForm').modal('show');
-            $('#modalForm .modal-title').text('Tambah Data Jurusan');
+            $('#modalForm .modal-title').text('Tambah Data Siswa');
             $('#modalForm form')[0].reset();
 
             $('#modalForm form').attr('action', url);
@@ -116,7 +116,7 @@
 
         function editData(url){
             $('#modalForm').modal('show');
-            $('#modalForm .modal-title').text('Edit Data Jurusan');
+            $('#modalForm .modal-title').text('Edit Data Siswa');
 
             $('#modalForm form')[0].reset();
             $('#modalForm form').attr('action', url);
@@ -135,7 +135,6 @@
                     $('#modalForm [name=tanggal_lahir]').val(response.tanggal_lahir);
                     $('#modalForm [name=alamat]').val(response.alamat);
                     $('#modalForm [name=asal_sekolah]').val(response.asal_sekolah);
-                    $('#modalForm [name=nama_wali]').val(response.nama_wali);
                     // console.log(response.nama);
                 })
                 .fail((errors) => {

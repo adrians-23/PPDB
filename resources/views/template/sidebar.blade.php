@@ -40,8 +40,8 @@
 
             <li class="{{ request()->is('user') ? 'active' : '' }}">
                 <a class="nav-link" href="">
-                    <i class="fas fa-user"></i>
-                    <span>User</span>
+                    <i class="fas fa-check-to-slot"></i>
+                    <span>Approve Siswa</span>
                 </a>
             </li>
         </ul>
@@ -54,7 +54,7 @@
 
             <li class="{{ request()->is('profile') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('profile.index') }}">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-address-card"></i>
                     <span>Profil</span>
                 </a>
             </li>

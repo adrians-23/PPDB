@@ -120,6 +120,11 @@
                             </div>
                         </div>
 
+                        <div class="my-1">
+                            <label class="mb-2" for="password">Password</label>
+                            <input type="password" name="password" id="password" value="{{ old('password')}}" class="form-control">
+                        </div>
+
                     </div>
 
                     <div class="modal-footer justify-content-between">

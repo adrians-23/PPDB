@@ -20,8 +20,12 @@ class ProfileController extends Controller
     {
         $jurusan = Jurusan::all();
         $siswa = Siswa::all();
+        $findid =  Auth()->user()->id;
+        $profile = Siswa::with('user')->where('user_id', $findid)->get();
+        $profileJurusan = Jurusan::with('user')->where('user_id', $findid)->get();
+        //return $profile;
 
-        return view('loginsiswa.profile', compact('jurusan', 'siswa'));
+        return view('loginsiswa.profile', compact('jurusan', 'siswa', 'profile', 'profileJurusan'));
     }
 
     /**
@@ -31,7 +35,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('loginsiswa.formProfile');
     }
 
     /**
@@ -51,9 +55,10 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        return response()->json($siswa);
     }
 
     /**
@@ -62,9 +67,10 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        return view('loginsiswa.formProfile', compact('siswa'));
     }
 
     /**
@@ -74,9 +80,27 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, $id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $siswa->nama = $request->nama;
+        $siswa->nisn = $request->nisn;
+        $siswa->jurusan_id = $request->jurusan_id;
+        $siswa->email = $request->email;
+        $siswa->telepon = $request->telepon;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->tempat_lahir = $request->tempat_lahir;
+        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->alamat = $request->alamat;
+        $siswa->asal_sekolah = $request->asal_sekolah;
+        $siswa->update();
+
+        $user = User::find($id);
+        $user->password = $request->password;
+        $user->update();
+
+        return response()->json('Data Telah Diupdate');
     }
 
     /**

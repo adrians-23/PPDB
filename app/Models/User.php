@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Siswa;
+use App\Models\Jurusan;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -43,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Siswa(){
+        return $this->belongsTo(Siswa::class);
+    }
+
+    public function Jurusan(){
+        return $this->belongsTo(Jurusan::class);
+    }
 }
